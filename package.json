@@ -1,0 +1,16 @@
+{
+  "name": "cda-query-referer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@datocms/cda-client": "^0.2.10"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0"
+  }
+}
