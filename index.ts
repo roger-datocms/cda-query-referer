@@ -1,4 +1,4 @@
-import {rawExecuteQuery, executeQuery, type ExecuteQueryOptions} from "@datocms/cda-client";
+import {rawExecuteQuery, type ExecuteQueryOptions} from "@datocms/cda-client";
 import {randomUUID} from "node:crypto";
 
 const query = `
@@ -19,7 +19,7 @@ const query = `
         token: process.env.DATOCMS_API_TOKEN, // From https://cda-query-referer.admin.datocms.com/project_settings/access_tokens/398768/edit
         referer: referer, // This works
         requestInitOptions: {
-            referrer: 'https://www.fake.com' // This does nothing, apparently...
+            // referrer: 'https://www.fake.com' // This does nothing, apparently...
         },
         fetchFn: (url: RequestInfo | URL, init: RequestInit) => {
             console.log(`init.referrer: ${init.referrer}`); // This seems like a useless param? Maybe a mis-typing?
@@ -28,9 +28,5 @@ const query = `
         },
     }
 
-    const queryResult = await executeQuery(query, queryOptions);
-    const rawQueryResult = await rawExecuteQuery(query,queryOptions);
-
-    console.log('queryResult', queryResult);
-    console.log(`rawQueryResult`, rawQueryResult);
+    await rawExecuteQuery(query,queryOptions);
 })()
